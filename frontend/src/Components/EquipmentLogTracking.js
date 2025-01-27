@@ -69,13 +69,7 @@ export default function EquipmentLogTracking() {
 
   return (
     <div>
-      <h1
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         Equipments Log Tracking
       </h1>
       <div>
