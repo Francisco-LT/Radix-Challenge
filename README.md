@@ -26,7 +26,7 @@ The response must be `"Log saved on database."`
 
 - The second endpoint is `http://localhost:3001/equipments/uploadError`. You should use the "POST" request method. In the body section, you must select "form-data", create a key named `"file"` and in the value field you have to upload a csv file in the following format:
 
-        ![alt text](image.png)
+        ![alt text](https://github.com/Francisco-LT/Radix-Challenge/blob/main/image.png)
 
 
 The response must be "Error log saved on database."
