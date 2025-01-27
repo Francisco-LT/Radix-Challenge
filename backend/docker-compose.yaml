@@ -7,4 +7,4 @@ services:
       MYSQL_ROOT_PASSWORD: radix
       MYSQL_DATABASE: equipments
     ports:
-      - "3306:3306"
+      - '3306:3306'

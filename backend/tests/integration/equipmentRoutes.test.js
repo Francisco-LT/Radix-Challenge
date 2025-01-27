@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const { equipmentrRoutes }  = require('../../src/routes');
+const { equipmentrRoutes } = require('../../src/routes');
 const equipmentService = require('../../src/services/equipment.service');
 
 // Mock the service layer
@@ -21,11 +21,12 @@ describe('User Routes', () => {
   it('GET /users should return a list of users', async () => {
     // Mock the service response
     equipmentService.getAveragesValues.mockResolvedValue([
-      { id: 1,
-      equipmentId: 'EQ-123451016',
-          timestamp: '2023-02-15T01:30:00.000-05:00',
-          value: 100
-       },
+      {
+        id: 1,
+        equipmentId: 'EQ-123451016',
+        timestamp: '2023-02-15T01:30:00.000-05:00',
+        value: 100,
+      },
     ]);
 
     const response = await request(app).get('/equipments');

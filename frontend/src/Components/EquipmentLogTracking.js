@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 
 // Register Chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function EquipmentLogTracking() {
   const [equipments, setEquipments] = useState(null);
@@ -48,16 +63,20 @@ export default function EquipmentLogTracking() {
   if (!equipments || !Array.isArray(equipments.averageValue)) {
     return (
       <div>
-        <h1>
-          No equipment data available.
-        </h1>
+        <h1>No equipment data available.</h1>
       </div>
     );
   }
 
   return (
     <div>
-      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <h1
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         Equipments Log Tracking
       </h1>
       <div>
@@ -87,7 +106,7 @@ export default function EquipmentLogTracking() {
                 ],
                 borderWidth: 1,
                 barThickness: 30,
-                maxBarThickness: 30
+                maxBarThickness: 30,
               },
             ],
           };
@@ -112,10 +131,10 @@ export default function EquipmentLogTracking() {
 
           return (
             <div key={equipment.equipmentId}>
-              <h2 style={{ display: 'flex', justifyContent: 'center'}}>
+              <h2 style={{ display: 'flex', justifyContent: 'center' }}>
                 Equipment ID: {equipment.equipmentId}
               </h2>
-              <div style={{ width: '800px', marginLeft: "400px"}}>
+              <div style={{ width: '800px', marginLeft: '400px' }}>
                 <Bar data={chartData} options={chartOptions} />
               </div>
             </div>
@@ -125,4 +144,3 @@ export default function EquipmentLogTracking() {
     </div>
   );
 }
-
