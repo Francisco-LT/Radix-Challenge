@@ -8,7 +8,7 @@
     "dev-deps-start": "docker-compose up -d",
     "dev-migrations-up": "npx sequelize db:migrate",
     "dev": "nodemon src/server.js",
-    "test": "mocha tests/**/equipment.test.js --exit",
+    "test": "jest --coverage",
     "test-routes": "jest"
   },
   "keywords": [],
@@ -31,6 +31,16 @@
     "mocha": "10.0.0",
     "prettier": "^3.4.2",
     "sequelize-cli": "6.6.1",
-    "sequelize-test-helpers": "^1.4.3"
+    "sequelize-test-helpers": "^1.4.3",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/services/**/*.js",
+      "src/controllers/**/*.js"
+    ]
   }
 }

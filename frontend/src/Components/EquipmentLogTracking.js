@@ -10,7 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -134,8 +133,10 @@ export default function EquipmentLogTracking() {
               <h2 style={{ display: 'flex', justifyContent: 'center' }}>
                 Equipment ID: {equipment.equipmentId}
               </h2>
-              <div style={{ width: '800px', marginLeft: '400px' }}>
-                <Bar data={chartData} options={chartOptions} />
+              <div style={{ display: 'grid', placeItems: 'center' }}>
+                <div style={{ width: '800px' }}>
+                  <Bar data={chartData} options={chartOptions} />
+                </div>
               </div>
             </div>
           );

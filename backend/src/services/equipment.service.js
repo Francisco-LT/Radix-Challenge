@@ -3,6 +3,7 @@ const { fn, literal } = require('sequelize');
 const formidable = require('formidable');
 const fs = require('fs');
 const csv = require('csv-parser');
+const { handleMessages, buildQueries } = require('../utils/messages');
 
 const createEquipmentLog = async (equipmentId, timestamp, value) => {
   const newEquipmentLog = await Equipment.create({
@@ -21,17 +22,17 @@ const uploadAndParseEquipmentCsv = async (req) => {
   const fileData = await new Promise((resolve, reject) => {
     form.parse(req, (err, fields, files) => {
       if (err) {
-        return reject(new Error('Error uploading file'));
+        return reject(new Error(handleMessages.errorMessages.erroUploadCsv));
       }
 
       if (!files.file) {
-        return reject(new Error('No file uploaded'));
+        return reject(new Error(handleMessages.errorMessages.noFileUploaded));
       }
 
       const filePath = files.file[0]?.filepath;
 
       if (!filePath) {
-        return reject(new Error('No file uploaded'));
+        return reject(new Error(handleMessages.errorMessages.noFileUploaded));
       }
 
       fs.createReadStream(filePath)
@@ -42,8 +43,8 @@ const uploadAndParseEquipmentCsv = async (req) => {
           resolve(results);
         })
         .on('error', (err) => {
-          console.error('Error parsing CSV:', err);
-          reject(new Error('Error processing the file'));
+          console.error(handleMessages.errorMessages.cantParseCSV, err);
+          reject(new Error(handleMessages.errorMessages.cantParseCSV));
         });
     });
   });
@@ -61,44 +62,28 @@ const createEquipmentLogCSV = async (req) => {
   });
 };
 
+const timeIntervalQueries = {
+  oneDay: '1 DAY',
+  twoDays: '2 DAY',
+  oneWeek: '7 DAY',
+  oneMonth: '1 MONTH',
+};
+
 const getAveragesValues = async () => {
   const result = await Equipment.findAll({
     attributes: [
       'equipmentId',
+      [fn('AVG', literal(buildQueries(timeIntervalQueries.oneDay))), 'avg_24h'],
       [
-        fn(
-          'AVG',
-          literal(
-            `CASE WHEN timestamp BETWEEN NOW() - INTERVAL 1 DAY AND NOW() THEN value END`
-          )
-        ),
-        'avg_24h',
-      ],
-      [
-        fn(
-          'AVG',
-          literal(
-            `CASE WHEN timestamp BETWEEN NOW() - INTERVAL 2 DAY AND NOW() THEN value END`
-          )
-        ),
+        fn('AVG', literal(buildQueries(timeIntervalQueries.twoDays))),
         'avg_48h',
       ],
       [
-        fn(
-          'AVG',
-          literal(
-            `CASE WHEN timestamp BETWEEN NOW() - INTERVAL 7 DAY AND NOW() THEN value END`
-          )
-        ),
+        fn('AVG', literal(buildQueries(timeIntervalQueries.oneWeek))),
         'avg_1week',
       ],
       [
-        fn(
-          'AVG',
-          literal(
-            `CASE WHEN timestamp BETWEEN NOW() - INTERVAL 1 MONTH AND NOW() THEN value END`
-          )
-        ),
+        fn('AVG', literal(buildQueries(timeIntervalQueries.oneMonth))),
         'avg_1month',
       ],
     ],

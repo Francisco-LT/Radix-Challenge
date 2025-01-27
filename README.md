@@ -10,6 +10,7 @@ In order to build the backend project, you must follow the thes steps:
 - Run the script `npm run dev-migrations-up` to run the migrations and build the table in the database;
 - Run the script `npm run dev` to start the application;
 - After all these steps the application will be runing and functional, and you can start testing it.
+- Run the script`npm run` to run the project tests;
 
 ### `Backend endpoints`
 
@@ -55,6 +56,7 @@ Para construir o projeto de backend, siga os seguintes passos:
 - Execute o comando `npm run dev-migrations-up` para rodar as migrações e criar as tabelas no banco de dados;
 - Execute o comando `npm run dev` para iniciar a aplicação;
 - Após todos esses passos, a aplicação estará rodando e funcional, e você poderá começar a testá-la;
+- Execute o comando `npm test` rodar os testes do projeto;
 
 ### `Endpoints do backend`
 
