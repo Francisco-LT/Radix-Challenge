@@ -26,7 +26,10 @@ The response must be `"Log saved on database."`
 
 - The second endpoint is `http://localhost:3001/equipments/uploadError`. You should use the "POST" request method. In the body section, you must select "form-data", create a key named `"file"` and in the value field you have to upload a csv file in the following format:
 
-        ![alt text](https://github.com/Francisco-LT/Radix-Challenge/blob/main/image.png)
+        | equipmentId  |           timestamp               | value     |
+        |--------------|-----------------------------------|-----------|
+        | EQ-12495     | 2023-02-12T01:30:00.000-05:00     | 78.8      |
+        | EQ-12492     | 2023-01-12T01:30:00.000-05:00     | 8.8       |
 
 
 The response must be "Error log saved on database."
@@ -68,7 +71,10 @@ A resposta deverá ser `"Log saved on database."`
 
 - O segundo endpoint é `http://localhost:3001/equipments/uploadError`. Você deve usar o método "POST". Na seção body, selecione "form-data", crie uma key chamada `"file"` e faça o upload de um arquivo CSV no seguinte formato:
 
-        ![alt text](image.png)
+        | equipmentId  |           timestamp               | value     |
+        |--------------|-----------------------------------|-----------|
+        | EQ-12495     | 2023-02-12T01:30:00.000-05:00     | 78.8      |
+        | EQ-12492     | 2023-01-12T01:30:00.000-05:00     | 8.8       |
 
 
 A resposta será "Error log saved on database."
