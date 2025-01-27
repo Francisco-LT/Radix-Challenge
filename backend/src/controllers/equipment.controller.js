@@ -7,7 +7,7 @@ const insertEquipmentLogs = async (req, res) => {
     const { equipmentId, timestamp, value } = req.body;
     await equipmentService.createEquipmentLog(equipmentId, timestamp, value);
 
-    return res.status(200).json({success: 'Log saved on db'});
+    return res.status(200).json({success: 'Log saved on database'});
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
@@ -19,7 +19,7 @@ const insertEquipmentLogsCSV = async (req, res) => {
   try {
     await equipmentService.createEquipmentLogCSV(req);
 
-    return res.status(200).json({success: 'Error saved on db'});
+    return res.status(200).json({success: 'Error log saved on database'});
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: error500Message });
