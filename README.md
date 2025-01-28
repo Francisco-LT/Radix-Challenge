@@ -1,4 +1,8 @@
-# Getting Started Radix Challenge (ENGLISH)
+# Getting Started Radix Challenge (English)
+
+## Cloning Repository
+
+- In your terminal use the comand `git clone https://github.com/Francisco-LT/Radix-Challenge.git`
 
 ## Backend
 
@@ -45,6 +49,10 @@ In order to build the frontend project, you must follow the these steps:
 - On your browser open http://localhost:3000 to see the page;
 
 # Introdução ao Desafio Radix (Português)
+
+## Clonando repositório
+
+- No seu terminal digite o comando `git clone https://github.com/Francisco-LT/Radix-Challenge.git`
 
 ## Backend
 
